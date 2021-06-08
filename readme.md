@@ -1,17 +1,22 @@
-# Utility python scripts to calculate intermediate steps
+# Bite-sized Machine Learning Algorithms
 
 Currently supports:
-
-
-TODO:
-* Entropy
-* Gini Index
+* Decision Trees
+    * ID3 with Entropy
+    * CART with Gini
 * Perceptron
+* Gaussian Naïve Bayes
+    * Univariate
+    * Multivariate
+
+
+**TODO:**
 * NN
-* K-means ?
-* EM
-
-
-
-Hack for covariance
-(x1 - u)(x1 - u)^T
+* RBF
+* Clustering
+    * K-means
+    * EM
+* Linear Regression
+* Poly Regression
+* MLP/NN
+* PCA
