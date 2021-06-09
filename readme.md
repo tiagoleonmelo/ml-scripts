@@ -8,15 +8,18 @@ Currently supports:
 * Gaussian Naïve Bayes
     * Univariate
     * Multivariate
+* Linear Regression
+    * Polynomial Regression (LinReg with Non-Linear Transformation)
+* MLP/NN
+    * Sigmoid
+    * Tanh
+    * SSE
 
 
 **TODO:**
-* NN
+* NN - Softmax
 * RBF
 * Clustering
     * K-means
     * EM
-* Linear Regression
-* Poly Regression
-* MLP/NN
 * PCA
