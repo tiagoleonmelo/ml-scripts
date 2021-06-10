@@ -1,6 +1,6 @@
 # Bite-sized Machine Learning Algorithms
 
-Currently supports:
+### Currently supports
 * Decision Trees
     * ID3 with Entropy
     * CART with Gini
@@ -14,11 +14,11 @@ Currently supports:
     * Sigmoid
     * Tanh
     * SSE
-
-
-**TODO:**
-* NN - Softmax
 * RBF
+
+
+### TODO
+* NN - Softmax
 * Clustering
     * K-means
     * EM
