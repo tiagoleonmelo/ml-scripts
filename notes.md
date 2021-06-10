@@ -25,5 +25,11 @@ Start by computing the gradient of activation function
 >d(sigmoid(x))/dx = sigmoid(x) * (1 - sigmoid(x))
 >d(tanh(x))/dx = 1 - tanh(x)**2
 
-
 Now just compute the gradient of the error function
+
+### RBF
+Compute the RBF transformation (bias + 1 dim per centroid)
+Now do grad desc:
+>net = w.phi
+>output = act_func(net)
+>w = w + lr * (target - output) * phi

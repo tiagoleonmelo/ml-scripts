@@ -15,11 +15,11 @@
     * Tanh
     * SSE
 * RBF
-
+* Clustering
+    * EM
+* PCA
 
 ### TODO
 * NN - Softmax
 * Clustering
     * K-means
-    * EM
-* PCA
