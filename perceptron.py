@@ -1,23 +1,23 @@
 import numpy as np
 
 X = [
+    np.array([1] + [0, 0]),
+    np.array([1] + [0, 2]),
     np.array([1] + [1, 1]),
-    np.array([1] + [2, 2]),
-    np.array([1] + [0, -1]),
-    np.array([1] + [-1, 0])
+    np.array([1] + [1, -1])
 ]
 
 targets = [
-    1,
-    1,
     -1,
+    1,
+    1,
     -1
 ]
 
 w = np.array([
-    1,
-    1,
-    1
+    0,
+    0,
+    0
 ])
 
 learning_rate = 1

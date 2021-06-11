@@ -18,14 +18,14 @@ def expectation(X, means, covs, priors):
             mean = means[i]
             cov = covs[i]
             prior = priors[i]
-            print("Prior for class " + str(i) + " =", round(prior, 3))
+            print("Prior for class " + str(i) + " =", prior)
 
             likelihood = normal_multivar(x, mean, cov)
-            print("Likelihood for class " + str(i) + " =", round(likelihood, 3))
+            print("Likelihood for class " + str(i) + " =", likelihood)
 
             joint = prior * likelihood
             joints += [joint]
-            print("Joint Probability for class " + str(i) + " =", round(joint, 3))
+            print("Joint Probability for class " + str(i) + " =", joint)
 
             print()
 
@@ -33,7 +33,7 @@ def expectation(X, means, covs, priors):
         for i in range(len(joints)):
             normalized = joints[i] / sum(joints)
             posteriors[i] += [normalized]
-            print("Normalized Posterior for class " + str(i) + " =", round(normalized, 3))
+            print("Normalized Posterior for class " + str(i) + " =", normalized)
 
     return posteriors
 
@@ -74,14 +74,14 @@ def maximization(X, posteriors):
     return means, new_covs, new_priors
 
 X = [
-    np.array([2, 0]),
-    np.array([1, 0]),
-    np.array([0, 1])
+    np.array([2, 2]),
+    np.array([0, 2]),
+    np.array([0, 0])
 ]
 
 means = [
-    np.array([1, 0]),
-    np.array([0, 1])
+    np.array([2, 2]),
+    np.array([0, 0])
 ]
 
 covs = [
@@ -95,9 +95,9 @@ covs = [
     ])
 ]
 
-priors = [0.5, 0.5]
+priors = [0.6, 0.4]
 
-n_epochs = 2
+n_epochs = 1
 
 for epoch in range(n_epochs):
     print("\nEPOCH ", epoch)

@@ -7,24 +7,20 @@ stdev = sqrt(sum([(elem - mean)**2 for elem in elements]) / len(elements))
 """
 
 X = [
-    [0, 10],
-    [0, 20],
-    [10, 10],
-    [5, 20],
-    [30, 30],
-    [40, 40],
-    [50, 30],
-    [50, 50]
+    [170, 160],
+    [80, 220],
+    [90, 200],
+    [60, 160],
+    [50, 150],
+    [70, 190],
 ]
 
 targets = [
     'A',
-    'A',
-    'A',
-    'A',
     'B',
     'B',
-    'B',
+    'A',
+    'A',
     'B'
 ]
 
@@ -60,7 +56,7 @@ def univariate(X, classname, targets):
             if targets[i] == classname:
                 temp_stdev += (X[i][j] - temp_avg)**2
 
-        temp_stdev /= len([a for a in targets if a == classname])
+        temp_stdev /= len([a for a in targets if a == classname]) - 1
         temp_stdev = math.sqrt(temp_stdev)
 
         avg += [round(temp_avg, 3)]
@@ -80,21 +76,17 @@ def multivariate(X, classname, targets):
             contrib = contrib + elem1 @ elem2
             counter += 1
 
-    return mean, contrib * (1 / counter)
+    return mean, contrib * (1 / (counter-1))
 
 stats_a = univariate(X, 'A', targets)
 stats_b = univariate(X, 'B', targets)
 
-print(stats_a)
-print(stats_b)
+print("Stats for A:", stats_a)
+print("Stats for B:", stats_b)
 
-query = [5, 10]
+query = np.array([100, 225])
 
-final_a = round(
-    prior(targets, 'A') * normal(query[0], stats_a['Averages'][0], stats_a['Standard Deviations'][0]) * normal(query[1], stats_a['Averages'][1], stats_a['Standard Deviations'][1]),
-    3
-)
-
+final_a = prior(targets, 'A') * normal(query[0], stats_a['Averages'][0], stats_a['Standard Deviations'][0]) * normal(query[1], stats_a['Averages'][1], stats_a['Standard Deviations'][1])
 final_b = prior(targets, 'B') * normal(query[0], stats_b['Averages'][0], stats_b['Standard Deviations'][0]) * normal(query[1], stats_b['Averages'][1], stats_b['Standard Deviations'][1])
 
 print("Final odds of A: " + str(final_a), "\nFinal odds of B: " + str(final_b))
@@ -109,8 +101,8 @@ cov_b = multivariate(X, 'B', targets)[1]
 print("\nMultivariate stats for B:", "\n>> Mean: " + str(mean_b), "\n>> Covariance:\n" + str(cov_b))
 print()
 
-print("Odds of multivar X belonging to A:", normal_multivar(np.array([5, 10]), mean_a, cov_a))
-print("Odds of multivar X belonging to B:", normal_multivar(np.array([5, 10]), mean_b, cov_b))
+print("Odds of multivar X belonging to A:", normal_multivar(query, mean_a, cov_a))
+print("Odds of multivar X belonging to B:", normal_multivar(query, mean_b, cov_b))
 
 
 

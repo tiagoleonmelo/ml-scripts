@@ -23,9 +23,24 @@ print("Design Matrix after applying transformation:")
 pprint.pprint(design_mat)
 print()
 
+design_mat = [
+    np.array([1] + [1, 1]),
+    np.array([1] + [2, 1]),
+    np.array([1] + [1, 3]),
+    np.array([1] + [3, 3])
+]
+
+targets = [1.4, 0.5, 2, 2.5]
+
 weights = sse_closed_form(design_mat, targets)
 print("Computed Weights using the closed form solution w = ( X^T @ X ) ^1 @ X^T @ T")
 pprint.pprint(weights)
+print()
+
+query = np.array([1, 2, 3])
+
+print("Predicting", query, "by multiplying it with", weights)
+print("X @ W =", weights @ query)
 print()
 
 l2_weights = l2_reg_closed_form(design_mat, targets, lamb=2)
