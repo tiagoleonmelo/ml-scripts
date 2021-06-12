@@ -14,13 +14,13 @@
     * Sigmoid
     * Tanh
     * SSE
+    * Softmax
 * RBF
 * Clustering
     * EM
 * PCA
+* SVM
 
 ### TODO
-* NN - Softmax
-* SVM
 * Clustering
     * K-means
