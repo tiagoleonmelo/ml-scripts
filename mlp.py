@@ -39,9 +39,9 @@ def forward_propagation(query, w, b, act_funcs, target):
 
 def backward_propagation(query, w, b, lr, act_funcs, z, target, x):
     # Start by computing the delta of the last layer
+    act_func = act_funcs[-1]
     #### WARNING: THIS ASSUMES A SSE ERROR FUNCTION
     # If it is not a SSE, switch the next line for the derivative of E in order to X
-    act_func = act_funcs[-1]
     error = act_func(z[-1]) - target
     if act_func != softmax:
         last_delta = np.array(error) * derivatives[act_func](z[-1])
@@ -102,7 +102,7 @@ def sigmoid_derivative(z):
     return sigmoid(z) * (1 - sigmoid(z))
 
 def tanh_derivative(z):
-    return 0.1 * (1 - np.power(tanh(z), 2))
+    return 0.1 * (1 - np.power(np.tanh(z), 2))
 
 def softmax_derivative(z):
     return z * (1 - z)
