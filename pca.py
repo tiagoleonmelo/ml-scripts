@@ -32,10 +32,10 @@ def proj(X, vals, vecs):
     return ret
 
 X = [
-    np.array([1, 1]),
-    np.array([2, 2]),
-    np.array([3, 3]),
-    np.array([5, 4])
+    np.array([0, 0]),
+    np.array([4, 0]),
+    np.array([2, 1]),
+    np.array([6, 3])
 ]
 
 mean, cov = mean_and_cov(X)

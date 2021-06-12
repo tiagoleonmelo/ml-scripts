@@ -93,7 +93,7 @@ def sigmoid(z):
     return 1 / (1 + np.exp(-z))
 
 def tanh(z):
-    return (np.exp(z) - np.exp(-z)) / (np.exp(z) + np.exp(-z))
+    return 0.1 * (np.exp(z) - np.exp(-z)) / (np.exp(z) + np.exp(-z))
 
 def softmax(z):
     return np.exp(z) / sum(np.exp(z))
@@ -102,7 +102,7 @@ def sigmoid_derivative(z):
     return sigmoid(z) * (1 - sigmoid(z))
 
 def tanh_derivative(z):
-    return 1 - np.power(tanh(z), 2)
+    return 0.1 * (1 - np.power(tanh(z), 2))
 
 def softmax_derivative(z):
     return z * (1 - z)
@@ -117,37 +117,28 @@ derivatives[softmax] = softmax_derivative
 
 
 w1 = [
-    np.array([0.1, 0.1, 0.1, 0.1]),
-    np.array([0.1, 0.1, 0.1, 0.1]),
-    np.array([0.1, 0.1, 0.1, 0.1]),
-    np.array([0.1, 0.1, 0.1, 0.1])
+    np.array([1, 1, 1, 1, 1]),
+    np.array([1, 1, 1, 1, 1]),
+    np.array([1, 1, 1, 1, 1])
 ]
 
-b1 = np.array([0.1, 0.1, 0.1, 0.1])
+b1 = np.array([0, 0, 0])
 
 w2 = [
-    np.array([0.1, 0.1, 0.1, 0.1]),
-    np.array([0.1, 0.1, 0.1, 0.1]),
-    np.array([0.1, 0.1, 0.1, 0.1])
+    np.array([1, 1, 1]),
+    np.array([1, 1, 1])
 ]
 
-b2 = np.array([0.1, 0.1, 0.1])
+b2 = np.array([0, 0])
 
-w3 = [
-    np.array([0.1, 0.1, 0.1]),
-    np.array([0.1, 0.1, 0.1]),
-    np.array([0.1, 0.1, 0.1])
-]
+W = [w1, w2]
+b = [b1, b2]
 
-b3 = np.array([0.1, 0.1, 0.1])
+query = [1, 1, 1, 1, 1]
+target = [0, 0]
 
-W = [w1, w2, b3]
-b = [b1, b2, b3]
-
-query = [1, 0, 1, 0]
-target = [0, 1, 0]
-
-stochastic_gradient_descent(query, W, b, 0.1, [tanh, tanh, softmax], target)
+# WARNING: TANH HAS BEEN MULTIPLIED BY 0.1 (exam2)
+stochastic_gradient_descent(query, W, b, 1, [tanh, tanh], target)
 
 #query = [1, 0, 0, 0, 1]
 #stochastic_gradient_descent(query, W, b, 1, sigmoid, target)

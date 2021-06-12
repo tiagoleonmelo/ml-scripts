@@ -21,5 +21,6 @@
 
 ### TODO
 * NN - Softmax
+* SVM
 * Clustering
     * K-means

@@ -16,6 +16,12 @@ def l2_reg_closed_form(X, targets, lamb):
     tempX = np.array(X)
     tempT = np.array(targets)
 
+    print("About to be Inversed\n", tempX.T @ tempX + lamb * np.eye(len(X[0])))
+    print()
+
+    print("Inverse\n", np.linalg.inv(tempX.T @ tempX + lamb * np.eye(len(X[0]))))
+    print()
+
     return np.linalg.inv(tempX.T @ tempX + lamb * np.eye(len(X[0]))) @ tempX.T @ tempT
 
 design_mat = [transformation(x, 4) for x in X]
@@ -24,13 +30,13 @@ pprint.pprint(design_mat)
 print()
 
 design_mat = [
-    np.array([1] + [1, 1]),
-    np.array([1] + [2, 1]),
-    np.array([1] + [1, 3]),
-    np.array([1] + [3, 3])
+    np.array([1] + [2, 4]),
+    np.array([1] + [4, 2]),
+    np.array([1] + [5, 6]),
+    np.array([1] + [7, 5])
 ]
 
-targets = [1.4, 0.5, 2, 2.5]
+targets = [1, 1.5, 2, 2.5]
 
 weights = sse_closed_form(design_mat, targets)
 print("Computed Weights using the closed form solution w = ( X^T @ X ) ^1 @ X^T @ T")
@@ -43,7 +49,7 @@ print("Predicting", query, "by multiplying it with", weights)
 print("X @ W =", weights @ query)
 print()
 
-l2_weights = l2_reg_closed_form(design_mat, targets, lamb=2)
+l2_weights = l2_reg_closed_form(design_mat, targets, lamb=4)
 print("Computed Weights using the closed form solution w = ( X^T @ X + Lambda . I ) ^1 @ X^T @ T")
 pprint.pprint(l2_weights)
 print()
