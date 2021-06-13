@@ -2,7 +2,7 @@ import numpy as np
 import math
 
 def normal_multivar(x, mean, cov):
-    elem1= 1 / (math.sqrt((2 * math.pi)**2) * np.linalg.det(cov))
+    elem1= 1 / ((2 * math.pi)**(2*len(x)) * math.sqrt(np.linalg.det(cov)))
     elem2 = np.exp((-1 / 2) * np.array(x - mean).T @ np.linalg.inv(cov) @ np.array(x - mean))
     return elem1 * elem2
 
@@ -74,14 +74,14 @@ def maximization(X, posteriors):
     return means, new_covs, new_priors
 
 X = [
-    np.array([2, 2]),
-    np.array([0, 2]),
-    np.array([0, 0])
+    np.array([2, 0]),
+    np.array([1, 0]),
+    np.array([0, 1])
 ]
 
 means = [
-    np.array([2, 2]),
-    np.array([0, 0])
+    np.array([1, 0]),
+    np.array([0, 1])
 ]
 
 covs = [
@@ -95,9 +95,9 @@ covs = [
     ])
 ]
 
-priors = [0.6, 0.4]
+priors = [0.5, 0.5]
 
-n_epochs = 1
+n_epochs = 2
 
 for epoch in range(n_epochs):
     print("\nEPOCH ", epoch)
