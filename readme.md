@@ -14,7 +14,7 @@
     * Sigmoid
     * Tanh
     * SSE
-    * Softmax
+    * Softmax with Cross-Entropy
 * RBF
 * Clustering
     * EM
