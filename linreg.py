@@ -50,7 +50,7 @@ print("X @ W =", weights @ query)
 print()
 
 l2_weights = l2_reg_closed_form(design_mat, targets, lamb=4)
-print("Computed Weights using the closed form solution w = ( X^T @ X + Lambda . I ) ^1 @ X^T @ T")
+print("Computed Weights using the L2 closed form solution w = ( X^T @ X + Lambda . I ) ^1 @ X^T @ T")
 pprint.pprint(l2_weights)
 print()
 

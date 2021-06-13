@@ -26,8 +26,10 @@ def proj(X, vals, vecs):
     idx = np.where(vals == max(vals))
     ret = []
 
+    new_vecs = np.array(vecs).T
+
     for x in X:
-        ret += [round((vecs[idx] @ x)[0], 3)]
+        ret += [round((new_vecs[idx] @ x)[0], 3)]
 
     return ret
 
